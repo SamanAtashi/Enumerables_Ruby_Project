@@ -1,4 +1,6 @@
 # rubocop:disable Metrics/CyclomaticComplexity
+# rubocop:disable Metrics/PerceivedComplexity
+# rubocop:disable Metrics/BlockNesting
 module Enumerable
   def my_each
     if block_given?
@@ -55,3 +57,5 @@ module Enumerable
   end
 end
 # rubocop:enable Metrics/CyclomaticComplexity
+# rubocop:enable Metrics/PerceivedComplexity
+# rubocop:enable Metrics/BlockNesting
