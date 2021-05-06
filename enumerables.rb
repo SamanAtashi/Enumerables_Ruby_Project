@@ -97,8 +97,14 @@ module Enumerable
 
   def my_map
     result = []
-    to_a.my_each do |item|
-      result.push(yield item)
+    if proc
+      to_a.my_each do |item|
+        result.push(proc.call(item))
+      end
+    else
+      to_a.my_each do |item|
+        result.push(yield item)
+      end
     end
     result
   end
