@@ -1,3 +1,4 @@
+# rubocop:disable Metrics/CyclomaticComplexity
 module Enumerable
   def my_each
     if block_given?
@@ -53,3 +54,4 @@ module Enumerable
     end
   end
 end
+# rubocop:enable Metrics/CyclomaticComplexity
