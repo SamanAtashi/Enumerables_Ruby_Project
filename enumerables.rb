@@ -98,7 +98,7 @@ module Enumerable
   def my_map
     result = []
     to_a.my_each do |item|
-     result.push(yield item)
+      result.push(yield item)
     end
     result
   end
