@@ -76,7 +76,7 @@ module Enumerable
     end
     true
   end
-  
+
   def my_count(arg = nil)
     i = 0
     if arg
@@ -92,7 +92,7 @@ module Enumerable
     else
       i = to_a.length
     end
-   i
+    i
   end
 end
 # rubocop:enable Metrics/CyclomaticComplexity
