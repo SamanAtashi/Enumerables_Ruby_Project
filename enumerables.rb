@@ -55,6 +55,28 @@ module Enumerable
       puts 'block was not given'
     end
   end
+
+  def my_all?(sth = nil)
+    if empty?
+      true
+    elsif block_given?
+      my_each do |item|
+        return false unless yield item
+      end
+      true
+    else
+      my_each do |item|
+        if sth.instance_of?(Regexp)
+          return false if item.match?(sth) == false
+        elsif sth.is_a? Class
+          return false unless item.is_a? sth
+        elsif [false, nil].include?(item)
+          return false
+        end
+      end
+      true
+    end
+  end
 end
 # rubocop:enable Metrics/CyclomaticComplexity
 # rubocop:enable Metrics/PerceivedComplexity
