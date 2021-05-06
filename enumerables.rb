@@ -76,6 +76,25 @@ module Enumerable
     end
     true
   end
+  
+  def my_count(arg = nil)
+    i = 0
+    if arg
+      my_each do |item|
+        i += 1 if item == arg
+      end
+
+    elsif block_given?
+      my_each do |item|
+        i += 1 if yield item
+      end
+
+    else
+      i = to_a.length
+    end
+   i
+  end
+
 end
 # rubocop:enable Metrics/CyclomaticComplexity
 # rubocop:enable Metrics/PerceivedComplexity
