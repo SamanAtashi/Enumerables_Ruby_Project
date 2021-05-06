@@ -58,6 +58,7 @@ module Enumerable
 
   def my_all?(sth = nil)
     return true if empty?
+
     if block_given?
       my_each do |item|
         return false unless yield item
