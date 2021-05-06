@@ -58,12 +58,10 @@ module Enumerable
 
   def my_all?(sth = nil)
     if empty?
-      true
     elsif block_given?
       my_each do |item|
         return false unless yield item
       end
-      true
     else
       my_each do |item|
         if sth.instance_of?(Regexp)
@@ -74,8 +72,8 @@ module Enumerable
           return false
         end
       end
-      true
     end
+    true
   end
 end
 # rubocop:enable Metrics/CyclomaticComplexity
