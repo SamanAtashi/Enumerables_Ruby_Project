@@ -69,6 +69,8 @@ module Enumerable
           return false unless item.is_a? sth
         elsif [false, nil].include?(item)
           return false
+        elsif item != sth
+          return false
         end
       end
     end
