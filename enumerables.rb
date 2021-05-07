@@ -174,6 +174,10 @@ module Enumerable
     now_it_is
   end
 end
+
+def multiply_els(sth)
+  sth.my_inject(:*)
+end
 # rubocop:enable Metrics/CyclomaticComplexity
 # rubocop:enable Metrics/PerceivedComplexity
 # rubocop:enable Metrics/BlockNesting
