@@ -4,18 +4,16 @@
 # rubocop:disable Metrics/ModuleLength
 module Enumerable
   def my_each
-    if block_given?
-      i = 0
-      while i < length
-        if instance_of?(Array)
-          yield self[i]
-        else
-          yield(keys[i], values[i])
-        end
-        i += 1
+    return enum_for(:my_each) unless block_given?
+
+    i = 0
+    while i < length
+      if instance_of?(Array)
+        yield self[i]
+      else
+        yield(keys[i], values[i])
       end
-    else
-      return enum_for(:my_each)
+      i += 1
     end
   end
 
