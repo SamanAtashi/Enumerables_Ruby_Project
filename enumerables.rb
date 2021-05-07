@@ -145,6 +145,8 @@ module Enumerable
   end
 
   def my_map
+    return enum_for(:my_map) unless block_given?
+
     result = []
     if proc
       to_a.my_each do |item|
