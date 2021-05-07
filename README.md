@@ -9,6 +9,15 @@
 - Ruby 
 - Test: Rubocop
 
+## Getting Started
+
+1. Clone the project
+   `$ git clone https://github.com/SamanAtashi/Enumerables_Ruby_Project.git`
+2. Then open enuumerables in your `irb` or test it on terminal
+
+To get a local copy up and running follow these simple example steps.
+
+
 ## 👤 **Daniel maina**
 
 - GitHub: [@danmainah](https://github.com/danmainah)
