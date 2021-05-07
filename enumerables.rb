@@ -75,20 +75,23 @@ module Enumerable
   end
 
   def my_any?(sth = nil)
-    return false if empty?
+    new_self = *self
+
+    return false if new_self.empty?
 
     if block_given?
-      my_each do |item|
+      new_self.my_each do |item|
         return true if yield item
       end
     else
-      my_each do |item|
+      new_self.my_each do |item|
         if sth.instance_of?(Regexp)
           return true if item.match?(sth)
         elsif sth.is_a? Class
           return true if item.is_a? sth
         else
-          return false if self == [nil] || self == [false] || self == [nil, false] || self == [false, nil]
+          return false if [[nil], [false], [nil,
+                                            false], [false, nil]].include?(new_self)
 
           return true
         end
