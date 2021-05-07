@@ -52,14 +52,16 @@ module Enumerable
   end
 
   def my_all?(sth = nil)
-    return true if empty?
+    new_self = *self
+
+    return true if new_self.empty?
 
     if block_given?
-      my_each do |item|
+      new_self.my_each do |item|
         return false unless yield item
       end
     else
-      my_each do |item|
+      new_self.my_each do |item|
         if sth.instance_of?(Regexp)
           return false if item.match?(sth) == false
         elsif sth.is_a? Class
