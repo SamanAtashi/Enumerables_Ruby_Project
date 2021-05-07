@@ -15,6 +15,7 @@ module Enumerable
       end
       i += 1
     end
+    self if instance_of?(Array) || instance_of?(Range)
   end
 
   def my_each_with_index
