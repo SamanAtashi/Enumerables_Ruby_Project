@@ -155,6 +155,24 @@ module Enumerable
     end
     result
   end
+
+  def my_inject(*sth)
+    new_arr = self
+    if block_given?
+      now_it_is = sth[0] if sth.length == 1
+      now_it_is = new_arr.shift unless sth.nil? || sth.length == 1
+      new_arr.my_each do |item|
+        now_it_is = yield(now_it_is, item)
+      end
+    else
+      now_it_is = sth.length > 1 ? sth.shift : new_arr.shift
+      new_arr.my_each do |item|
+        now_it_is = now_it_is.send(sth[0].to_s, item)
+      end
+      return now_it_is
+    end
+    now_it_is
+  end
 end
 # rubocop:enable Metrics/CyclomaticComplexity
 # rubocop:enable Metrics/PerceivedComplexity
