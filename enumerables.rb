@@ -1,6 +1,5 @@
 # rubocop:disable Metrics/CyclomaticComplexity
 # rubocop:disable Metrics/PerceivedComplexity
-# rubocop:disable Metrics/BlockNesting
 # rubocop:disable Metrics/ModuleLength
 module Enumerable
   def my_each
@@ -31,21 +30,25 @@ module Enumerable
   def my_select
     return enum_for(:my_each) unless block_given?
 
+    new_self = *self
+
+    new_arr = []
+    new_hash = {}
+    if instance_of?(Hash)
+      j = 0
+      while j < length
+        new_hash[keys[j]] = values[j] if yield(keys[j], values[j])
+        j += 1
+      end
+      new_hash
+    elsif new_self.instance_of?(Array)
       i = 0
-      new_arr = []
-      new_hash = {}
-      while i < length
-        if instance_of?(Array)
-          new_arr << self[i] if yield self[i]
-        elsif yield(keys[i], values[i])
-          new_hash[keys[i]] = values[i]
-        end
+      while i < new_self.length
+        new_arr << new_self[i] if yield new_self[i]
         i += 1
       end
-
-      return new_arr if instance_of?(Array)
-      return new_hash if instance_of?(Hash)
-
+      new_arr
+    end
   end
 
   def my_all?(sth = nil)
@@ -171,5 +174,4 @@ def multiply_els(sth)
 end
 # rubocop:enable Metrics/CyclomaticComplexity
 # rubocop:enable Metrics/PerceivedComplexity
-# rubocop:enable Metrics/BlockNesting
 # rubocop:enable Metrics/ModuleLength
