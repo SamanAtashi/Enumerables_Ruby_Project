@@ -7,7 +7,7 @@ module Enumerable
     return enum_for(:my_each) unless block_given?
 
     i = 0
-    new_arr=*self
+    new_arr = *self
     while i < new_arr.length
       if new_arr.instance_of?(Array)
         yield new_arr[i]
