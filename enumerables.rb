@@ -19,17 +19,13 @@ module Enumerable
   end
 
   def my_each_with_index
-      return enum_for(:my_each) unless block_given?
+    return enum_for(:my_each) unless block_given?
 
-      i = 0
-      while i < length
-        if instance_of?(Array)
-          yield(self[i], i)
-        else
-          yield(values[i], i)
-        end
-        i += 1
-      end
+    i = 0
+    my_each do |item|
+      yield(item, i)
+      i += 1
+    end
   end
 
   def my_select
