@@ -15,7 +15,7 @@ module Enumerable
         i += 1
       end
     else
-      return enum_for(:my_each)
+      puts 'block was not given'
     end
   end
 
