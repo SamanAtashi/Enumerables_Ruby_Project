@@ -28,7 +28,7 @@ module Enumerable
   end
 
   def my_select
-    return enum_for(:my_each) unless block_given?
+    return enum_for(:my_select) unless block_given?
 
     new_self = *self
 
