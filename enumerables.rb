@@ -19,7 +19,8 @@ module Enumerable
   end
 
   def my_each_with_index
-    if block_given?
+      return enum_for(:my_each) unless block_given?
+
       i = 0
       while i < length
         if instance_of?(Array)
@@ -29,9 +30,6 @@ module Enumerable
         end
         i += 1
       end
-    else
-      puts 'block was not given'
-    end
   end
 
   def my_select
