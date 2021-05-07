@@ -29,7 +29,8 @@ module Enumerable
   end
 
   def my_select
-    if block_given?
+    return enum_for(:my_each) unless block_given?
+
       i = 0
       new_arr = []
       new_hash = {}
@@ -45,9 +46,6 @@ module Enumerable
       return new_arr if instance_of?(Array)
       return new_hash if instance_of?(Hash)
 
-    else
-      puts 'block was not given'
-    end
   end
 
   def my_all?(sth = nil)
