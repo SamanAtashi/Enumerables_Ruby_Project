@@ -7,11 +7,12 @@ module Enumerable
     return enum_for(:my_each) unless block_given?
 
     i = 0
-    while i < length
-      if instance_of?(Array)
-        yield self[i]
-      else
-        yield(keys[i], values[i])
+    new_arr=*self
+    while i < new_arr.length
+      if new_arr.instance_of?(Array)
+        yield new_arr[i]
+      elsif new_arr.instance_of?(Hash)
+        yield(new_arr.keys[i], new_arr.values[i])
       end
       i += 1
     end
