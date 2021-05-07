@@ -161,7 +161,7 @@ module Enumerable
   end
 
   def my_inject(*sth)
-    new_arr = self
+    new_arr = *self
     if block_given?
       now_it_is = sth[0] if sth.length == 1
       now_it_is = new_arr.shift unless sth.nil? || sth.length == 1
