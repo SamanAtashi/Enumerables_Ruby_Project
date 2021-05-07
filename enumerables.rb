@@ -77,6 +77,29 @@ module Enumerable
     true
   end
 
+  def my_any?(sth = nil)
+    return false if empty?
+
+    if block_given?
+      my_each do |item|
+        return true if yield item
+      end
+    else
+      my_each do |item|
+        if sth.instance_of?(Regexp)
+          return true if item.match?(sth)
+        elsif sth.is_a? Class
+          return true if item.is_a? sth
+        else
+          return false if self == [nil] || self == [false] || self == [nil, false] || self == [false, nil]
+
+          return true
+        end
+      end
+    end
+    false
+  end
+
   def my_count(arg = nil)
     i = 0
     if arg
