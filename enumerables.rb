@@ -92,10 +92,9 @@ module Enumerable
           return true if item.match?(sth)
         elsif sth.is_a? Class
           return true if item.is_a? sth
-        else
-          return false if [[nil], [false], [nil,
-                                            false], [false, nil]].include?(new_self)
-
+        elsif [[nil], [false], [nil, false], [false, nil]].include?(new_self)
+          return false
+        elsif item == sth
           return true
         end
       end
