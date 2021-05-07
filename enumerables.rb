@@ -67,9 +67,7 @@ module Enumerable
           return false if item.match?(sth) == false
         elsif sth.is_a? Class
           return false unless item.is_a? sth
-        elsif [false, nil].include?(item)
-          return false
-        elsif item != sth
+        elsif [false, nil].include?(item) || item != sth
           return false
         end
       end
