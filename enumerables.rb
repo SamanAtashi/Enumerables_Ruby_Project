@@ -112,7 +112,7 @@ module Enumerable
     false
   end
 
-  def my_none?(sth = nil)
+def my_none?(sth = nil)
     new_self = *self
 
     return true if new_self.empty?
@@ -130,7 +130,9 @@ module Enumerable
         elsif [[nil], [false], [nil, false], [false, nil]].include?(new_self)
           return true
         elsif item == sth
-          return false
+          return "last false"
+        else
+            return false
         end
       end
     end
