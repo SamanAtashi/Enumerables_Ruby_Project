@@ -143,20 +143,20 @@ module Enumerable
     i
   end
 
-  def my_map
-    return enum_for(:my_map) unless block_given?
+  def my_map(proc = nil)
+    return enum_for(:my_map) unless block_given? || !proc.nil?
 
-    result = []
+    new_arr = []
     if proc
       to_a.my_each do |item|
-        result.push(proc.call(item))
+        new_arr.push(proc.call(item))
       end
     else
       to_a.my_each do |item|
-        result.push(yield item)
+        new_arr.push(yield item)
       end
     end
-    result
+    new_arr
   end
 
   def my_inject(*sth)
