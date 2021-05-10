@@ -68,11 +68,11 @@ module Enumerable
           return false if item.match?(sth) == false
         elsif sth.is_a? Class
           return false unless item.is_a? sth
-        elsif sth == nil || sth == false
-          if self.length == 1
-             return true if sth==item
-          else
-            return false if [false, nil].include?(item)
+        elsif [nil, false].include?(sth)
+          if length == 1
+            return true if sth == item
+          elsif [false, nil].include?(item)
+            return false
           end
         end
       end
