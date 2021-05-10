@@ -1,7 +1,6 @@
 # rubocop:disable Metrics/CyclomaticComplexity
 # rubocop:disable Metrics/PerceivedComplexity
 # rubocop:disable Metrics/ModuleLength
-# rubocop:disable Lint/ToEnumArguments
 module Enumerable
   def my_each
     return enum_for(:my_each) unless block_given?
@@ -160,22 +159,22 @@ module Enumerable
     new_arr
   end
 
-  def my_inject(*sth)
-    new_arr = *self
-    if block_given?
-      now_it_is = sth[0] if sth.length == 1
-      now_it_is = new_arr.shift unless sth.nil? || sth.length == 1
-      new_arr.my_each do |item|
-        now_it_is = yield(now_it_is, item)
+  def my_inject(accum = nil, current = nil)
+    if (!accum.nil? && current.nil?) && (accum.is_a?(Symbol) || accum.is_a?(String))
+      current = accum
+      accum = nil
+    end
+
+    if !block_given? && !current.nil?
+      to_a.my_each do |item|
+        accum = accum.nil? ? item : accum.send(current, item)
       end
     else
-      now_it_is = sth.length > 1 ? sth.shift : new_arr.shift
-      new_arr.my_each do |item|
-        now_it_is = now_it_is.send(sth[0].to_s, item)
+      to_a.my_each do |item|
+        accum = accum.nil? ? item : yield(accum, item)
       end
-      return now_it_is
     end
-    now_it_is
+    accum
   end
 end
 
@@ -185,4 +184,3 @@ end
 # rubocop:enable Metrics/CyclomaticComplexity
 # rubocop:enable Metrics/PerceivedComplexity
 # rubocop:enable Metrics/ModuleLength
-# rubocop:enable Lint/ToEnumArguments
