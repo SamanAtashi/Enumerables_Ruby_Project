@@ -78,7 +78,7 @@ module Enumerable
             return false
           end
         else
-            return false unless item == sth
+          return false unless item == sth
         end
       end
     end
