@@ -2,8 +2,9 @@
 # rubocop:disable Metrics/PerceivedComplexity
 # rubocop:disable Metrics/MethodLength
 # rubocop:disable Metrics/ModuleLength
-# rubocop:disable Lint/ToEnumArguments
 # rubocop:disable Metrics/BlockNesting
+# rubocop:disable Lint/ToEnumArguments
+# rubocop:disable Lint/DuplicateBranch
 module Enumerable
   def my_each
     return enum_for(:my_each) unless block_given?
@@ -82,7 +83,7 @@ module Enumerable
     true
   end
 
-def my_any?(sth = nil)
+  def my_any?(sth = nil)
     new_self = *self
 
     return false if new_self.empty?
@@ -100,7 +101,7 @@ def my_any?(sth = nil)
         elsif sth.nil?
           to_a.my_each { |i| return true if i }
         elsif [true].include?(new_self)
-        return true
+          return true
         elsif item == sth
           return true
         else
@@ -196,5 +197,6 @@ end
 # rubocop:enable Metrics/PerceivedComplexity
 # rubocop:enable Metrics/MethodLength
 # rubocop:enable Metrics/ModuleLength
-# rubocop:enable Lint/ToEnumArguments
 # rubocop:enable Metrics/BlockNesting
+# rubocop:enable Lint/ToEnumArguments
+# rubocop:enable Lint/DuplicateBranch
