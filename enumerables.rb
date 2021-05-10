@@ -3,6 +3,7 @@
 # rubocop:disable Metrics/MethodLength
 # rubocop:disable Metrics/ModuleLength
 # rubocop:disable Lint/ToEnumArguments
+# rubocop:disable Metrics/BlockNesting
 module Enumerable
   def my_each
     return enum_for(:my_each) unless block_given?
@@ -192,3 +193,4 @@ end
 # rubocop:enable Metrics/MethodLength
 # rubocop:enable Metrics/ModuleLength
 # rubocop:enable Lint/ToEnumArguments
+# rubocop:enable Metrics/BlockNesting
