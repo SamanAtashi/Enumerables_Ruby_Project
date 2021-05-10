@@ -77,6 +77,8 @@ module Enumerable
           elsif [false, nil].include?(item)
             return false
           end
+        else
+            return false unless item == sth
         end
       end
     end
