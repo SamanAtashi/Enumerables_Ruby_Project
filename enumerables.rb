@@ -1,6 +1,7 @@
 # rubocop:disable Metrics/CyclomaticComplexity
 # rubocop:disable Metrics/PerceivedComplexity
 # rubocop:disable Metrics/MethodLength
+# rubocop:disable Metrics/ModuleLength
 # rubocop:disable Lint/ToEnumArguments
 module Enumerable
   def my_each
@@ -189,4 +190,5 @@ end
 # rubocop:enable Metrics/CyclomaticComplexity
 # rubocop:enable Metrics/PerceivedComplexity
 # rubocop:enable Metrics/MethodLength
+# rubocop:enable Metrics/ModuleLength
 # rubocop:enable Lint/ToEnumArguments
