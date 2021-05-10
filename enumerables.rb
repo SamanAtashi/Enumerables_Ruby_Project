@@ -82,7 +82,7 @@ module Enumerable
     true
   end
 
-  def my_any?(sth = nil)
+def my_any?(sth = nil)
     new_self = *self
 
     return false if new_self.empty?
@@ -97,9 +97,13 @@ module Enumerable
           return true if item.match?(sth)
         elsif sth.is_a? Class
           return true if item.is_a? sth
-        elsif [[nil], [false], [nil, false], [false, nil]].include?(new_self)
-          return false
+        elsif sth.nil?
+          to_a.my_each { |i| return true if i }
+        elsif [true].include?(new_self)
+        return true
         elsif item == sth
+          return true
+        else
           return true
         end
       end
