@@ -131,7 +131,7 @@ module Enumerable
           return true
         elsif sth == item
           return false
-        end 
+        end
       end
     end
     true
