@@ -104,10 +104,8 @@ module Enumerable
           to_a.my_each { |i| return true if i }
         elsif [true].include?(new_self)
           return true
-        elsif item == sth
-          return true
         else
-          return true
+          return true if sth == item
         end
       end
     end
