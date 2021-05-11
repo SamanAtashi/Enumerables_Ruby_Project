@@ -129,8 +129,9 @@ module Enumerable
           return false if item.is_a? sth
         elsif [[nil], [false], [nil, false], [false, nil]].include?(new_self)
           return true
-        elsif sth == item
-          return false
+        else
+          return false if sth == item
+          return false if sth.nil? && item
         end
       end
     end
