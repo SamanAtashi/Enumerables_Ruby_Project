@@ -132,6 +132,7 @@ module Enumerable
         else
           return false if sth == item
           return false if sth.nil? && item
+          return true
         end
       end
     end
