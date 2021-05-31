@@ -63,3 +63,18 @@ describe Enumerable do
        end
     end
     
+    describe '#my_none?' do
+        it 'returns true if no element matches the condition' do
+            expect(int_arr.my_none?(Float)).to eql(true)
+            expect(int_arr.my_none?(Numeric)).to eql(false)
+        end
+        it 'returns true if no element matches the condition' do
+            expect(str_arr.my_none?{ |word| word.length == 5 }).to eql(true)
+            expect(str_arr.my_none?{ |word| word.length >= 3 }).to eql(false)
+        end
+        it 'returns true if no element matches the condition' do
+            expect(combined_arr.my_none?).to eql(false)
+             expect(empty_arr.my_none?).to eql(true)
+        end
+       end
+    
