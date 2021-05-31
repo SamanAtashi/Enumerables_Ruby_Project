@@ -98,3 +98,13 @@ describe Enumerable do
             expect(int_arr.my_map).to be_a(Enumerator)
           end
     end
+
+    describe '#my_inject' do
+        it 'returns result of using symbol when no block is given' do
+            expect(int_arr.my_inject(:+)).to eql(15)
+            expect(int_arr.my_inject(20, :+)).to eql(35)
+          end
+          it 'raises LocalJumpError if no block or proc given or works with block or with 2 arguments' do
+            expect { int_arr.my_inject }.to raise_error(LocalJumpError)
+          end
+    end
