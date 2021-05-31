@@ -50,3 +50,16 @@ describe Enumerable do
        end
     end
     
+    describe '#my_any?' do
+        it 'returns true if atleast one element matches the requirements' do
+          expect(int_arr.my_any?{ |n| n > 3 }).to eql(true)
+          expect(int_arr.my_any?{ |n| n > 5 }).to eql(false)
+          expect(int_arr.my_any?).to eql(true)
+        end
+        it 'returns true if atleast one element matches the requirements' do
+          expect(str_arr.my_any?('matatu')).to eql(true)
+          expect(str_arr.my_any?('faith')).to eql(false)
+          expect(combined_arr.my_any?(nil)).to eql(true)
+       end
+    end
+    
