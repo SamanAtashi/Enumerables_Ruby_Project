@@ -25,3 +25,13 @@ describe Enumerable do
        end
     end
     
+    describe '#my_select' do
+        it 'returns new array of elements in an array that meet a certain criteria' do
+        expect(int_arr.my_select{|x| x.even?}).to eql([2,4])
+        expect(int_arr.my_select{|x| !x.even?}).to eql([1,3,5])
+        end
+        it 'returns new array of elements in an array that meet a certain criteria' do
+            expect(combined_arr.my_select{|x| x.nil?}).to eql([nil])
+            expect(combined_arr.my_select{|x| !x.nil?}).to eql([10,true])
+        end
+       end
