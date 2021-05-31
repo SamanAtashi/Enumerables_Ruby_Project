@@ -78,3 +78,14 @@ describe Enumerable do
         end
        end
     
+       describe'#my_count' do
+        it 'returns the number of items in an array' do
+            expect(int_arr.my_count).to eql (5)
+            expect(int_arr.my_count(2)).to eql (1)
+            expect(int_arr.my_count{ |x| x%2==0 }).to eql (2)
+        end
+        it 'returns the number of items in an array' do
+            expect(str_arr.my_count).to eql(3)
+            expect(str_arr.my_count('matatu')).to eql(1)
+        end
+    end
