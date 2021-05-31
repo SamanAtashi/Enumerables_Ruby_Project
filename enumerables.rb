@@ -114,7 +114,9 @@ module Enumerable
 
   def my_none?(sth = nil)
     new_self = *self
+
     return true if new_self.empty?
+
     if block_given?
       new_self.my_each do |item|
         return false if yield item
