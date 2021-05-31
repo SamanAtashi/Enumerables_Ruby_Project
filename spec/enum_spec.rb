@@ -89,3 +89,12 @@ describe Enumerable do
             expect(str_arr.my_count('matatu')).to eql(1)
         end
     end
+
+    describe '#my_map' do
+        it 'returns new array after calling the block given' do
+            expect(int_arr.my_map { |item| item**2 }).to eql([1, 4, 9, 16, 25])
+        end
+        it 'returns an enumerator if no block given' do
+            expect(int_arr.my_map).to be_a(Enumerator)
+          end
+    end
