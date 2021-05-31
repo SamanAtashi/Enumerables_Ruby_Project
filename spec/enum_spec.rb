@@ -15,3 +15,13 @@ describe Enumerable do
              expect(int_arr.my_each).to be_a(Enumerator)
          end
      end
+
+     describe '#my_each_with_index' do
+        it 'iterates over every element with its index' do
+            expect(int_arr.my_each_with_index{ |item, index| item if index.even? }).to eql([1,2,3,4,5])
+        end
+        it 'returns Enumerator if no block given'do
+        expect(int_arr.my_each_with_index).to be_a(Enumerator)
+       end
+    end
+    
