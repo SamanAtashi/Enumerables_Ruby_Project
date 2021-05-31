@@ -127,13 +127,12 @@ module Enumerable
           return false if item.match?(sth)
         elsif sth.is_a? Class
           return false if item.is_a? sth
-        elsif [[nil], [false], [nil, false], [false, nil]].include?(new_self)
-          return true
-        else
-          return false if sth == item
-          return false if sth.nil? && item
-
-          return true
+        elsif sth.nil?
+          to_a.my_each { |i| return false if i }
+        elsif [true].include?(new_self)
+          return false
+        elsif sth == item
+          return false
         end
       end
     end
