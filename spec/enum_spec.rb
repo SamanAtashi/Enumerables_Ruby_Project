@@ -35,3 +35,18 @@ describe Enumerable do
             expect(combined_arr.my_select{|x| !x.nil?}).to eql([10,true])
         end
        end
+
+       describe '#my_all?' do
+        it 'returns true if all elements matches the condition in the original array' do
+            expect(int_arr.my_all?(Numeric)).to eql(true)
+       end
+       it 'returns true if all elements matches the condition in the original array' do
+        expect(str_arr.my_all?{ |word| word.length >= 3 }).to eql(true)
+        expect(str_arr.my_all?{ |word| word.length >= 5 }).to eql(false)
+       end
+       it 'returns true if all elements matches the condition in the original array' do
+        expect(combined_arr.my_all?).to eql(false)
+        expect(empty_arr.my_all?).to eql(true)
+       end
+    end
+    
